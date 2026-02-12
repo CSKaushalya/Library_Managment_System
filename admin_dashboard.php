@@ -129,7 +129,7 @@
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">📖 Books</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="add_book.php">Add New Book</a>
-                        <a class="dropdown-item" href="manage_book.php">Manage Inventory</a>
+                        <a class="dropdown-item" href="manage_book.php">Manage Book</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -137,6 +137,13 @@
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="add_cat.php">Add Category</a>
                         <a class="dropdown-item" href="manage_cat.php">Manage List</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">📖 Authors</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="add_author.php">Add New Author</a>
+                        <a class="dropdown-item" href="manage_author.php">Manage Authors</a>
                     </div>
                 </li>
                 <li class="nav-item">
