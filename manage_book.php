@@ -41,17 +41,43 @@
         <div class="p-4 text-center fw-bold border-bottom border-secondary">📚 LMS ADMIN</div>
         <div class="p-3 mt-2">
             <ul class="nav flex-column">
-                <li class="nav-item"><a class="nav-link" href="admin_dashboard.php">📊 Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link active" href="manage_book.php">📖 Manage Books</a></li>
-                <li class="nav-item"><a class="nav-link" href="issue_book.php">✍️ Issue Book</a></li>
-                <li class="nav-item mt-4"><a class="nav-link text-danger" href="../logout.php">Logout</a></li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="admin_dashboard.php">📊 Dashboard</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">📖 Books</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="add_book.php">Add New Book</a>
+                        <a class="dropdown-item" href="manage_book.php">Manage Book</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">📁 Categories</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="add_cat.php">Add Category</a>
+                        <a class="dropdown-item" href="manage_cat.php">Manage List</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">📖 Authors</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="add_author.php">Add New Author</a>
+                        <a class="dropdown-item" href="manage_author.php">Manage Authors</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="issue_book.php">🎫 Issue Book</a>
+                </li>
+                <li class="nav-item mt-4">
+                    <a class="nav-link text-danger" href="../logout.php">Logout</a>
+                </li>
             </ul>
         </div>
     </nav>
 
     <div id="content">
         <div class="p-4 bg-white shadow-sm d-flex justify-content-between align-items-center">
-            <h5 class="mb-0 fw-bold">Book Inventory</h5>
+            <h5 class="mb-0 fw-bold">Manage Books</h5>
             <a href="add_book.php" class="btn btn-primary btn-sm px-3">+ Add New Asset</a>
         </div>
 
@@ -103,5 +129,7 @@
             </div>
         </div>
     </div>
+
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

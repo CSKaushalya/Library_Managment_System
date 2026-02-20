@@ -59,11 +59,33 @@
         <div class="sidebar-header"><span class="text-info">📚</span> LMS ADMIN</div>
         <div class="p-3 mt-2">
             <ul class="nav flex-column">
-                <li class="nav-item"><a class="nav-link" href="admin_dashboard.php">📊 Dashboard</a></li>
                 <li class="nav-item">
-                    <a class="nav-link active fw-bold text-white" href="add_author.php">✍️ Add Author</a>
+                    <a class="nav-link active" href="admin_dashboard.php">📊 Dashboard</a>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="manage_author.php">⚙️ Manage Authors</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">📖 Books</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="add_book.php">Add New Book</a>
+                        <a class="dropdown-item" href="manage_book.php">Manage Book</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">📁 Categories</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="add_cat.php">Add Category</a>
+                        <a class="dropdown-item" href="manage_cat.php">Manage List</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">📖 Authors</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="add_author.php">Add New Author</a>
+                        <a class="dropdown-item" href="manage_author.php">Manage Authors</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="issue_book.php">🎫 Issue Book</a>
+                </li>
             </ul>
         </div>
     </nav>
