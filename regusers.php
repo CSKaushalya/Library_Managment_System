@@ -13,74 +13,89 @@
 <html lang="en">
 <head>
     <title>LMS | Registered Users</title>
-    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="../bootstrap-4.4.1/css/bootstrap.min.css">
-    <script type="text/javascript" src="../bootstrap-4.4.1/js/juqery_latest.js"></script>
-    <script type="text/javascript" src="../bootstrap-4.4.1/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
         <div class="container-fluid">
-            <a class="navbar-brand" href="admin_dashboard.php">Library Management System (LMS)</a>
-            <div class="text-white">
-                <span class="mr-3"><strong>Admin: <?php echo $_SESSION['name'];?></strong></span>
-            </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown">My Profile </a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="view_profile_admin.php">View Profile</a>
-                        <a class="dropdown-item" href="edit_profile_admin.php">Edit Profile</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="change_password_admin.php">Change Password</a>
+            <a class="navbar-brand" href="admin_dashboard.php">Library Management System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="adminNavbar">
+                <div class="navbar-nav ms-auto align-items-lg-center">
+                    <span class="nav-item text-white me-3 small">
+                        <strong>Admin:</strong> <?php echo htmlspecialchars($_SESSION['name']); ?>
+                    </span>
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            My Profile
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item" href="view_profile_admin.php">View Profile</a></li>
+                            <li><a class="dropdown-item" href="edit_profile_admin.php">Edit Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="change_password_admin.php">Change Password</a></li>
+                        </ul>
                     </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../logout.php">Logout</a>
-                </li>
-            </ul>
+                    <a class="nav-link btn btn-outline-danger btn-sm ms-lg-3 text-white" href="../logout.php">Logout</a>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <div class="container-fluid mt-4">
+    <div class="container mt-5">
         <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
-                <div class="card shadow-sm">
-                    <div class="card-header bg-white py-3">
-                        <h4 class="text-center mb-0">Registered Student Details</h4>
+            <div class="col-lg-11 mx-auto">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white py-3 border-bottom">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0 text-primary fw-bold">Registered Student Details</h5>
+                            <span class="badge bg-secondary">Total Users: <?php echo mysqli_num_rows(mysqli_query($connection, $query)); ?></span>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <table class="table table-bordered table-hover text-center">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Mobile</th>
-                                    <th>Address</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                    $query_run = mysqli_query($connection, $query);
-                                    while ($row = mysqli_fetch_assoc($query_run)){
-                                        ?>
-                                        <tr>
-                                            <td class="font-weight-bold"><?php echo htmlspecialchars($row['name']);?></td>
-                                            <td><?php echo htmlspecialchars($row['email']);?></td>
-                                            <td><?php echo htmlspecialchars($row['mobile']);?></td>
-                                            <td><?php echo htmlspecialchars($row['address']);?></td>
-                                        </tr>
-                                        <?php
-                                    }
-                                ?>
-                            </tbody>
-                        </table>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="ps-4">Name</th>
+                                        <th>Email</th>
+                                        <th>Mobile</th>
+                                        <th class="pe-4">Address</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                        $query_run = mysqli_query($connection, $query);
+                                        if(mysqli_num_rows($query_run) > 0) {
+                                            while ($row = mysqli_fetch_assoc($query_run)){
+                                                ?>
+                                                <tr>
+                                                    <td class="ps-4 fw-semibold text-dark"><?php echo htmlspecialchars($row['name']);?></td>
+                                                    <td><?php echo htmlspecialchars($row['email']);?></td>
+                                                    <td><?php echo htmlspecialchars($row['mobile']);?></td>
+                                                    <td class="pe-4 text-muted small"><?php echo htmlspecialchars($row['address']);?></td>
+                                                </tr>
+                                                <?php
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='4' class='text-center py-4'>No users found.</td></tr>";
+                                        }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-1"></div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
